@@ -1,4 +1,4 @@
-# CICD_Geo
+# CICD_names
 
 This project is for developers who want to write applications that can query IP-API,
 We shows the data in format via a simple URL-based interface over HTTP, which enables us to use our data directly from a user's browser or from your server.
@@ -97,8 +97,8 @@ response :
 
 ## Authors
 
-**[Almog Mahluf](https://github.com/Almogma)** 
+**[Shirel Biton](https://github.com/shirelBiton)** 
 
-**[Alon Gabay](https://github.com/AlonGabbay)** 
+**[Shani](https://github.com/AlodsGabbay)** 
 
 * **Almog Mahluf** - *Initial work* - [PurpleBooth]
