@@ -126,5 +126,33 @@ class MyTestCase(unittest.TestCase):
 
         # assert
         self.assertEqual(result, expected)
+
+    @patch('src.postal_code_class.requests.get')
+    def test_invalid_postal_code_invalid_country_invalid_username(self, mock_get):
+        '''
+
+        :param mock_get: mock the object behaviour
+        :return:
+        '''
+        postal_code_information = {'status': {'message': 'user does not exist.', 'value': 10}}
+
+        # Configure the mock to return a response with an OK status code. Also, the mock should have
+        # a `json()` method that returns.
+        mock_get.return_value = Mock(ok=True)
+        mock_get.return_value.json.return_value = postal_code_information
+
+        # assume
+        postal_code = '6600000'
+        country = 'HELLO'
+        user_name = 'aaa'
+
+        # expected
+        expected = {'status': {'message': 'user does not exist.', 'value': 10}}
+
+        # action
+        result = PostalCode.postal_code_places(postal_code, country, user_name)
+
+        # assert
+        self.assertEqual(result, expected)
 if __name__ == '__main__':
     unittest.main()
