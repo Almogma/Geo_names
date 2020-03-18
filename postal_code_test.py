@@ -374,5 +374,24 @@ class MyTestCase(unittest.TestCase):
         # assert
         self.assertEqual(result, expected)
 
+    def test_invalid_type_lng(self):
+        '''
+
+        :return:
+        '''
+        # assume
+        lat = '47.01'
+        lng = 10
+        user_name = 'shirel_biton'
+
+        # expected
+        expected = "Invalid input type"
+
+        # action
+        result = PostalCode.time_zone(lat, lng, user_name)
+
+        # assert
+        self.assertEqual(result, expected)
+
 if __name__ == '__main__':
     unittest.main()
