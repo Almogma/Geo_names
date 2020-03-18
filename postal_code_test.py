@@ -193,5 +193,25 @@ class MyTestCase(unittest.TestCase):
         # assert
         self.assertEqual(result, expected)
 
+    def test_invalid_type_user_name(self):
+        '''
+
+        :return:
+        '''
+        # assume
+        postal_code = '6600'
+        country = 'AT'
+        user_name = 1
+
+        # expected
+        expected = "Invalid user type"
+
+        # action
+        result = PostalCode.postal_code_places(postal_code, country, user_name)
+
+        # assert
+        self.assertEqual(result, expected)
+
+
 if __name__ == '__main__':
     unittest.main()
