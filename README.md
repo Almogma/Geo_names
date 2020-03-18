@@ -1,4 +1,4 @@
-# CICD_names
+# CICD_Geo_names
 
 This project is designed for developers who want to use the services of Geo names API. 
 The data is performed by URL queries, and mainly using REST webservices. 
@@ -56,6 +56,6 @@ http://www.geonames.org/export/web-services.html
 
 **[Shirel Biton](https://github.com/shirelBiton)** 
 
-**[Shani Waizman](https://github.com/AlodsGabbay)**
+**[Shani Waizman](https://github.com/shaniwaizman)**
 
 **[Kobaivanov Yakir](https://github.com/yakirk1)** 
