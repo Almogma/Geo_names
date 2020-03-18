@@ -1,99 +1,56 @@
 # CICD_names
 
-This project is for developers who want to write applications that can query IP-API,
-We shows the data in format via a simple URL-based interface over HTTP, which enables us to use our data directly from a user's browser or from your server.
+This project is designed for developers who want to use the services of Geo names API. 
+The data is performed by URL queries, and mainly using REST webservices. 
 
 ### Prerequisites
 
-The files we need to install are -
+Required installations:
 * Python interpreter (version 3.7)
 * requests
 * pylint
 
 ```
-* To install requests you have to write that line on your terminal - pipenv install requests.
-* To install pylint you have to write that line on your terminal - pip install pylint.
+* In order to install requests you should enter this line in the project terminal  - pipenv install requests.
+* In order to install pylint you should enter this line in the project terminal - 
+pip install pylint.
 ```
+
 ### How to install the project - 
-1. Clone this repository to your computer by using the command "git clone : https://github.com/Almogma/CICD_Geo.git" 
+1. Clone this repository to your computer by using the command "git clone": https://github.com/Almogma/CICD_Geo.git" 
 2. Open the project in your preferred workspace
 3. Run Main
 
-Choose feature number 1 -
+There is a option to choose the wanted feature of the avaliable options:
 
-### Feature num 1 - IP Geolocation - JSON endpoint 
-
-To search with query IP-API you have to write by this format : 
-```
-The API base path is
-http://ip-api.com/json/{query}
-```
-{query} can be a single IPv4/IPv6 address or a domain name. If you don't supply a query the current IP address will be used.
-
+### Feature 1 - place name lokup with postal code
+This feature introduces the places which are connected to the given postal code.
+The searhing is performed by the URL: api.geonames.org/postalCodeLookupJSON? with the parameters: postal code, country, user name. 
 
 ```
 Example - 
-Query : 24.48.0.1
-response : 
-{
-  "query": "24.48.0.1",
-  "status": "success",
-  "country": "Canada",
-  "countryCode": "CA",
-  "region": "QC",
-  "regionName": "Quebec",
-  "city": "Montreal",
-  "zip": "H1S",
-  "lat": 45.5808,
-  "lon": -73.5825,
-  "timezone": "America/Toronto",
-  "isp": "Le Groupe Videotron Ltee",
-  "org": "Videotron Ltee",
-  "as": "AS5769 Videotron Telecom Ltee"
-}
+HTTP get request:
+http://api.geonames.org/postalCodeLookupJSON?postalcode=6600&country=AT&username=shirel_biton
+
+response:
+Reutte","lng":10.70065200805664,"countryCode":"AT","postalcode":"6600","adminName1":"Tirol","placeName":"Unterpinswang","lat":47.500470170782684}]}
 ```
 
-Choose feature number 2 -
-
-### Feature num 2 - Client Subnet and DNS server API -  
-
-Call the API by sending HTTP GET requests to
-```
-http://[32 random alphanumeric characters].edns.ip-api.com/json
-```
-[32 random alphanumeric characters] - you cant pass the limit of 32 characters.
-
-you can run automatic redirection by this HTTP requests 
-
-```
-http://edns.ip-api.com/json
-```
+### Feature 2 - time zone -  
+This feature introduces sunrise and sunset time in a specific lat and lng.
+The searhing is performed by the URL: api.geonames.org/timezone? with the parameters: lat, lng and user name. 
 
 ```
 Example - 
-HTTP GET requests - http://edns.ip-api.com/json
+HTTP GET requests - http://api.geonames.org/timezoneJSON?lat=47.01&lng=10.2&username=shirel_biton
 
-response : 
-{
-    "dns": {
-        "ip": "74.125.73.83",
-        "geo": "United States - Google"
-    },
-    "edns": {
-        "ip": "91.198.174.0",
-        "geo": "Netherlands - Wikimedia Foundation"
-    }
-}
+{"sunrise":"2020-03-18 06:25","lng":10.2,"countryCode":"AT","gmtOffset":1,"rawOffset":1,"sunset":"2020-03-18 18:29","timezoneId":"Europe/Vienna","dstOffset":2,"countryName":"Austria","time":"2020-03-18 12:56","lat":47.01}
 ```
-
-* dns contains the IP address and Geolocation (country, ISP) of the DNS server the client used.
-
-* edns contains the IP address and Geolocation (country, ISP) of the client. If the DNS server did not send the client subnet, the edns field will be be absent.
 
 ## information source
 
-* https://ip-api.com/docs/dns
-* https://ip-api.com/docs/api:json
+http://www.geonames.org/export/web-services.html
+
 
 ## Authors
 
