@@ -212,6 +212,37 @@ class MyTestCase(unittest.TestCase):
         # assert
         self.assertEqual(result, expected)
 
+    @patch('src.postal_code_class.requests.get')
+    def test_valid_lat_valid_lng_valid_username(self, mock_get):
+        '''
+
+        :param mock_get: mock the object behaviour
+        :return:
+        '''
+        time_zone_information = {'sunrise': '2020-03-17 06:27', 'lng': 10.2, 'countryCode': 'AT',
+                                 'gmtOffset': 1, 'rawOffset': 1, 'sunset': '2020-03-17 18:28',
+                                 'timezoneId': 'Europe/Vienna', 'dstOffset': 2,
+                                 'countryName': 'Austria', 'time': '2020-03-17 11:16', 'lat': 47.01}
+
+        # Configure the mock to return a response with an OK status code. Also, the mock should have
+        # a `json()` method that returns.
+        mock_get.return_value = Mock(ok=True)
+        mock_get.return_value.json.return_value = time_zone_information
+
+        # assume
+        lat = '47.01'
+        lng = '10.02'
+        user_name = 'shirel_biton'
+
+        # expected
+        expected = 'country name: Austria, sunrise: 2020-03-17 06:27, sunset2020-03-17 18:28'
+
+        # action
+        result = PostalCode.time_zone(lat, lng, user_name)
+
+        # assert
+        self.assertEqual(result, expected)
+
 
 if __name__ == '__main__':
     unittest.main()
