@@ -154,5 +154,25 @@ class MyTestCase(unittest.TestCase):
 
         # assert
         self.assertEqual(result, expected)
+
+    def test_invalid_type_postal_code(self):
+        '''
+
+        :return:
+        '''
+        # assume
+        postal_code = 123
+        country = 'AT'
+        user_name = 'shirel_biton'
+
+        # expected
+        expected = "Invalid input type"
+
+        # action
+        result = PostalCode.postal_code_places(postal_code, country, user_name)
+
+        # assert
+        self.assertEqual(result, expected)
+
 if __name__ == '__main__':
     unittest.main()
